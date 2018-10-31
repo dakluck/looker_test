@@ -29,6 +29,7 @@ view: fact_pos_detail_coldcraft {
   dimension: date_sk {
     type: string
     sql: ${TABLE}."DATE_SK" ;;
+    hidden: yes
   }
 
   dimension: dax_id {
@@ -46,7 +47,7 @@ view: fact_pos_detail_coldcraft {
     sql: ${TABLE}."DISCOUNT" ;;
   }
 
-  dimension: drop {
+  dimension: Sales_Order{
     type: string
     sql: ${TABLE}."Drop" ;;
   }
@@ -56,17 +57,17 @@ view: fact_pos_detail_coldcraft {
     sql: ${TABLE}."INVENTORY_LOCATION" ;;
   }
 
-  dimension: item {
+  dimension: Item {
     type: string
     sql: ${TABLE}."ITEM" ;;
   }
 
-  dimension: latitude {
+  dimension: Latitude {
     type: number
     sql: ${TABLE}."LATITUDE" ;;
   }
 
-  dimension: longitude {
+  dimension: Longitude {
     type: number
     sql: ${TABLE}."LONGITUDE" ;;
   }
@@ -78,8 +79,8 @@ view: fact_pos_detail_coldcraft {
 
   dimension: Account_Location{
     type: location
-    sql_latitude: ${latitude};;
-    sql_longitude:${longitude};;
+    sql_latitude: ${Latitude};;
+    sql_longitude:${Longitude};;
   }
 
   dimension: qty {
@@ -87,18 +88,18 @@ view: fact_pos_detail_coldcraft {
     sql: ${TABLE}."QTY" ;;
   }
 
-  dimension: route_id {
+  dimension: Route_Number {
     type: string
     sql: ${TABLE}."ROUTE_ID" ;;
   }
 
-  dimension: sales_rep {
+  dimension: RSR {
     type: string
     sql: ${TABLE}."SALES_REP" ;;
 
   }
 
-  dimension: transaction_type {
+  dimension: Transaction_Type {
     type: string
     sql: ${TABLE}."TRANSACTION_TYPE" ;;
   }
@@ -112,7 +113,7 @@ view: fact_pos_detail_coldcraft {
     type: sum
     sql:  ${amount} ;;
     filters: {
-      field: transaction_type
+      field: Transaction_Type
       value: "Buyback ,Sales"
     }
     drill_fields: []
@@ -128,7 +129,7 @@ view: fact_pos_detail_coldcraft {
     type: sum
     sql:  ${qty} ;;
     filters: {
-      field: transaction_type
+      field: Transaction_Type
       value: "Buyback ,Sales"
     }
     drill_fields: []
@@ -154,7 +155,7 @@ view: fact_pos_detail_coldcraft {
 
   measure: routes {
     type: count_distinct
-    sql: ${route_id};;
+    sql: ${Route_Number};;
     drill_fields: []
   }
 
