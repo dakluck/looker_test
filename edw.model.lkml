@@ -1,4 +1,4 @@
-connection: "snowflake_pc_edw_test"
+connection: "snowflake_pc_dailey_test"
 
 # include all the views
 include: "*.view"

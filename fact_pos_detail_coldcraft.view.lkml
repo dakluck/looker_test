@@ -140,6 +140,18 @@ view: fact_pos_detail_coldcraft {
     drill_fields: []
   }
 
+  measure: brands {
+    type: count_distinct
+    sql: ${brand};;
+    drill_fields: []
+  }
+
+  measure: avg_brands_account {
+    type: number
+    sql: ${brands}/nullif(${stores});;
+    drill_fields: []
+  }
+
   measure: routes {
     type: count_distinct
     sql: ${route_id};;
