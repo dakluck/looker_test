@@ -121,7 +121,7 @@ view: fact_pos_detail_coldcraft {
 
   measure: avg_sales_route_week {
     type: number
-    sql: ${gross_sales_less_buybacks}/nullif(${routes},0)/nullif(${weeks},0) ;;
+    sql: ${gross_sales_less_buybacks}/nullif(${routes},0) ;;
     drill_fields: []
   }
 
