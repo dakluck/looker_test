@@ -5,16 +5,16 @@
   - title: Coldcraft Sales Trend
     name: Coldcraft Sales Trend
     model: edw
-    explore: Dates
+    explore: dates
     type: looker_column
     fields:
-    - Dates.Calendar_week
+    - dates.Calendar_week
     - Sales.Gross_Sales_Less_Buybacks
     - Sales.Returns
     fill_fields:
-    - Dates.Calendar_week
+    - dates.Calendar_week
     sorts:
-    - Dates.Calendar_week desc
+    - dates.Calendar_week desc
     limit: 500
     stacking: ''
     show_value_labels: false
@@ -56,7 +56,7 @@
       Item: Sales.Item
       Account: Sales.Account
       Delivery Method: Sales.Delivery_Method
-      Relative Date: Dates.Relative_Date
+      Relative Date: dates.Relative_Date
     row: 0
     col: 0
     width: 20
@@ -109,7 +109,7 @@
       Item: Sales.Item
       Account: Sales.Account
       Delivery Method: Sales.Delivery_Method
-      Relative Date: Dates.Relative_Date
+      Relative Date: dates.Relative_Date
     row: 4
     col: 20
     width: 4
@@ -157,7 +157,7 @@
       Item: Sales.Item
       Account: Sales.Account
       Delivery Method: Sales.Delivery_Method
-      Relative Date: Dates.Relative_Date
+      Relative Date: dates.Relative_Date
     row: 9
     col: 0
     width: 8
@@ -171,11 +171,11 @@
     - Sales.Distinct_SKUs
     - Sales.units_store_week
     - Sales.Distinct_Stores
-    - Dates.Calendar_month
+    - dates.Calendar_month
     fill_fields:
-    - Dates.Calendar_month
+    - dates.Calendar_month
     sorts:
-    - Dates.Calendar_month desc
+    - dates.Calendar_month desc
     limit: 500
     stacking: ''
     show_value_labels: false
@@ -239,7 +239,7 @@
       Item: Sales.Item
       Account: Sales.Account
       Delivery Method: Sales.Delivery_Method
-      Relative Date: Dates.Relative_Date
+      Relative Date: dates.Relative_Date
     row: 9
     col: 8
     width: 16
@@ -303,7 +303,7 @@
       Item: Sales.Item
       Account: Sales.Account
       Delivery Method: Sales.Delivery_Method
-      Relative Date: Dates.Relative_Date
+      Relative Date: dates.Relative_Date
     row: 20
     col: 0
     width: 24
@@ -378,7 +378,7 @@
       Item: Sales.Item
       Account: Sales.Account
       Delivery Method: Sales.Delivery_Method
-      Relative Date: Dates.Relative_Date
+      Relative Date: dates.Relative_Date
     row: 15
     col: 0
     width: 24
@@ -431,7 +431,7 @@
       Item: Sales.Item
       Account: Sales.Account
       Delivery Method: Sales.Delivery_Method
-      Relative Date: Dates.Relative_Date
+      Relative Date: dates.Relative_Date
     row: 0
     col: 20
     width: 4
@@ -439,7 +439,7 @@
   - title: Top 10 Customers by Brand
     name: Top 10 Customers by Brand
     model: edw
-    explore: Dates
+    explore: dates
     type: looker_bar
     fields:
     - Sales.Account
@@ -492,13 +492,13 @@
   - title: Average Brands Per Account
     name: Average Brands Per Account
     model: edw
-    explore: Dates
+    explore: dates
     type: looker_column
     fields:
-    - Dates.Calendar_month
+    - dates.Calendar_month
     - Sales.Avg_Brands_Per_Account
     fill_fields:
-    - Dates.Calendar_month
+    - dates.Calendar_month
     limit: 500
     stacking: ''
     show_value_labels: false
@@ -595,10 +595,10 @@
     allow_multiple_values: true
     required: false
     model: edw
-    explore: Dates
+    explore: dates
     listens_to_filters:
     - Delivery Method
     - Account
     - Item
     - Brand
-    field: Dates.Relative_Date
+    field: dates.Relative_Date
