@@ -64,4 +64,10 @@ view: Dates {
     type: string
     sql: ${TABLE}."TO_DATE" ;;
   }
+
+  measure: Distinct_Weeks {
+    type: count_distinct
+    sql: ${Fiscal_Week} ;;
+    drill_fields: []
+  }
 }

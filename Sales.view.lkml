@@ -154,15 +154,9 @@ view: Sales {
     drill_fields: []
   }
 
-  measure: Distinct_Weeks {
-    type: count_distinct
-    sql: ${Dates.Fiscal_Week} ;;
-    drill_fields: []
-  }
-
   measure: units_store_week {
     type: number
-    sql: ${gross_units_less_buybacks}/nullif(${Distinct_Stores},0)/nullif(${Distinct_Weeks},0);;
+    sql: ${gross_units_less_buybacks}/nullif(${Distinct_Stores},0)/nullif(${Dates.Distinct_Weeks},0);;
     drill_fields: []
   }
 
