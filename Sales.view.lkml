@@ -148,6 +148,7 @@ view: Sales {
   measure: Active_Stores {
     type: count_distinct
     sql: ${DAX_Number};;
+    description: "Stores Listed as Active in Salesforce"
   }
 
 
@@ -191,6 +192,7 @@ view: Sales {
     type: number
     sql: ${Distinct_Brands}/nullif(${Active_Stores},0) ;;
     drill_fields: []
+    description: "Need To Ask About This One - Hard to Replicate"
   }
 
   measure: Unit_Mix {
