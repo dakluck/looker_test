@@ -187,6 +187,12 @@ view: Sales {
     drill_fields: []
   }
 
+  measure: Avg_Brands_Per_Account {
+    type: number
+    sql: ${Distinct_Brands}/nullif(${Active_Stores},0) ;;
+    drill_fields: []
+  }
+
   measure: Unit_Mix {
     type: percent_of_total
     sql: ${Gross_Sales_Less_Buybacks} ;;
