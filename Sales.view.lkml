@@ -160,7 +160,7 @@ view: Sales {
 
   measure: Distinct_Routes {
     type: count_distinct
-    sql: ${Route_Number};;
+    sql: ${RSR};;
     drill_fields: []
   }
 
