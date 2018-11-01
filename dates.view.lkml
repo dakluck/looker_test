@@ -26,12 +26,20 @@ view: dates {
     sql: ${TABLE}."DAY_NAME" ;;
   }
 
- #group_label is hierarchy
+  #group_label is hierarchy
+  #this is a comment
 
   dimension: Fiscal_Day {
     group_label: "Fiscal Calendar"
     type: number
     sql: ${TABLE}."FISCAL_DAY" ;;
+  }
+
+  dimension: Fiscal_Week {
+    group_label: "Fiscal Calendar"
+    type: number
+    sql: ${TABLE}."FISCAL_WEEK" ;;
+    alias: [Week]
   }
 
   dimension: Fiscal_Month {
@@ -46,13 +54,6 @@ view: dates {
     type: number
     sql: ${TABLE}."FISCAL_QUARTER" ;;
     alias: [Quarter]
-  }
-
-  dimension: Fiscal_Week {
-    group_label: "Fiscal Calendar"
-    type: number
-    sql: ${TABLE}."FISCAL_WEEK" ;;
-    alias: [Week]
   }
 
   dimension: Fiscal_Year {
