@@ -10,27 +10,27 @@ datagroup: edw_default_datagroup {
 
 persist_with: edw_default_datagroup
 
-explore: Dates {
+explore: dates {
   join: sales {
     type: inner
     relationship: one_to_many
-    sql_on: ${sales.date_sk} = ${Dates.date_sk} ;;
+    sql_on: ${sales.date_sk} = ${dates.date_sk} ;;
   }
 }
 
 explore: sales {
-  join: Dates {
+  join: dates {
     type: inner
     relationship: many_to_one
-    sql_on: ${Dates.date_sk} = ${sales.date_sk} ;;
+    sql_on: ${dates.date_sk} = ${sales.date_sk} ;;
   }
 
 }
 
-explore: Aloha_Detail {
-  join: Dates {
+explore: aloha_detail {
+  join: dates {
     type: left_outer
     relationship: many_to_one
-    sql_on: ${Dates.date_sk} = ${Aloha_Detail.dateofbusiness_date} ;;
+    sql_on: ${dates.date_sk} = ${aloha_detail.dateofbusiness_date} ;;
   }
 }

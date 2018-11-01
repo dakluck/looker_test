@@ -1,4 +1,4 @@
-view: Aloha_Detail {
+view: aloha_detail {
   sql_table_name: PUBLIC.FACT_HSTGNDITEM ;;
 
   dimension: bohcontrolname {

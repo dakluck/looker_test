@@ -178,7 +178,7 @@ view: sales {
 
   measure: units_store_week {
     type: number
-    sql: ${Gross_Units_Less_Buybacks}/nullif(${Count_Of_Stores},0)/nullif(${Dates.Distinct_Weeks},0);;
+    sql: ${Gross_Units_Less_Buybacks}/nullif(${Count_Of_Stores},0)/nullif(${dates.Distinct_Weeks},0);;
     drill_fields: []
   }
 
@@ -203,7 +203,7 @@ view: sales {
 
   measure: units_store_sku_week {
     type: number
-    sql: ${Gross_Units_Less_Buybacks}/nullif(${Count_Of_Stores},0)/nullif(${Dates.Distinct_Weeks},0)/nullif(${Distinct_SKUs},0);;
+    sql: ${Gross_Units_Less_Buybacks}/nullif(${Count_Of_Stores},0)/nullif(${dates.Distinct_Weeks},0)/nullif(${Distinct_SKUs},0);;
     drill_fields: []
   }
 

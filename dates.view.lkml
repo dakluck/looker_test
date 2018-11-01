@@ -1,4 +1,4 @@
-view: Dates {
+view: dates {
   sql_table_name: PUBLIC.DIM_DATE ;;
 
   dimension_group: Calendar {
