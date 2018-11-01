@@ -26,19 +26,19 @@ view: Dates {
     sql: ${TABLE}."DAY_NAME" ;;
   }
 
-  dimension: fiscal_day {
-    type: string
+  dimension: Fiscal_Day {
+    type: number
     sql: ${TABLE}."FISCAL_DAY" ;;
   }
 
   dimension: Fiscal_Month {
-    type: string
+    type: number
     sql: ${TABLE}."FISCAL_MONTH" ;;
     alias: [Month]
   }
 
   dimension: Fiscal_Quarter {
-    type: string
+    type: number
     sql: ${TABLE}."FISCAL_QUARTER" ;;
     alias: [Quarter]
   }
@@ -50,9 +50,10 @@ view: Dates {
   }
 
   dimension: Fiscal_Year {
-    type: string
+    type: number
     sql: ${TABLE}."FISCAL_YEAR" ;;
     alias: [Year]
+    order_by_field: Fiscal_Year
   }
 
   dimension: Relative_Date {
