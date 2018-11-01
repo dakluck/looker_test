@@ -1,4 +1,4 @@
-view: fact_pos_detail_coldcraft {
+view: Sales {
   sql_table_name: PUBLIC.FACT_POS_DETAIL_COLDCRAFT ;;
 
   dimension: Amount {

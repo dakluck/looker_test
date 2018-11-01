@@ -11,18 +11,18 @@ datagroup: edw_default_datagroup {
 persist_with: edw_default_datagroup
 
 explore: Dates {
-  join: fact_pos_detail_coldcraft {
+  join: Sales {
     type: inner
     relationship: one_to_many
-    sql_on: ${fact_pos_detail_coldcraft.date_sk} = ${Dates.date_sk} ;;
+    sql_on: ${Sales.date_sk} = ${Dates.date_sk} ;;
   }
 }
 
-explore: fact_pos_detail_coldcraft {
+explore: Sales {
   join: Dates {
     type: inner
     relationship: many_to_one
-    sql_on: ${Dates.date_sk}.date_sk} = ${fact_pos_detail_coldcraft.date_sk} ;;
+    sql_on: ${Dates.date_sk}.date_sk} = ${Sales.date_sk} ;;
   }
 
 }
