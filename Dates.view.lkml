@@ -19,6 +19,7 @@ view: Dates {
   dimension: date_sk {
     type: string
     sql: ${TABLE}."DATE_SK" ;;
+    hidden: yes
   }
 
   dimension: Day {
