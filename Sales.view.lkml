@@ -140,11 +140,16 @@ view: Sales {
     drill_fields: []
   }
 
-  measure: Distinct_Stores {
+  measure: Count_Of_Stores {
     type: count_distinct
     sql: ${DAX_Number};;
-    drill_fields: [Route_Number]
   }
+
+  measure: Active_Stores {
+    type: count_distinct
+    sql: ${DAX_Number};;
+  }
+
 
   measure: Distinct_Brands {
     type: count_distinct
@@ -154,7 +159,7 @@ view: Sales {
 
   measure: avg_brands_account {
     type: number
-    sql: ${Distinct_Brands}/nullif(${Distinct_Stores});;
+    sql: ${Distinct_Brands}/nullif(${Count_Of_Stores});;
     drill_fields: []
   }
 
@@ -172,7 +177,7 @@ view: Sales {
 
   measure: units_store_week {
     type: number
-    sql: ${Gross_Units_Less_Buybacks}/nullif(${Distinct_Stores},0)/nullif(${Dates.Distinct_Weeks},0);;
+    sql: ${Gross_Units_Less_Buybacks}/nullif(${Count_Of_Stores},0)/nullif(${Dates.Distinct_Weeks},0);;
     drill_fields: []
   }
 
@@ -190,7 +195,7 @@ view: Sales {
 
   measure: units_store_sku_week {
     type: number
-    sql: ${Gross_Units_Less_Buybacks}/nullif(${Distinct_Stores},0)/nullif(${Dates.Distinct_Weeks},0)/nullif(${Distinct_SKUs},0);;
+    sql: ${Gross_Units_Less_Buybacks}/nullif(${Count_Of_Stores},0)/nullif(${Dates.Distinct_Weeks},0)/nullif(${Distinct_SKUs},0);;
     drill_fields: []
   }
 
