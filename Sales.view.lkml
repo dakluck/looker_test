@@ -104,7 +104,7 @@ view: Sales {
     sql: ${TABLE}."TRANSACTION_TYPE" ;;
   }
 
-  measure: gross_sales_less_buybacks {
+  measure: Gross_Sales_Less_Buybacks {
     type: sum
     sql:  ${Amount} ;;
     filters: {
@@ -116,16 +116,26 @@ view: Sales {
 
   measure: avg_sales_route_week {
     type: number
-    sql: ${gross_sales_less_buybacks}/nullif(${Distinct_Routes},0) ;;
+    sql: ${Gross_Sales_Less_Buybacks}/nullif(${Distinct_Routes},0) ;;
     drill_fields: []
   }
 
-  measure: gross_units_less_buybacks {
+  measure: Gross_Units_Less_Buybacks {
     type: sum
     sql:  ${Quantity} ;;
     filters: {
       field: Transaction_Type
       value: "Buyback ,Sales"
+    }
+    drill_fields: []
+  }
+
+  measure: Returns {
+    type: sum
+    sql:  ${Amount}*-1 ;;
+    filters: {
+      field: Transaction_Type
+      value: "Return"
     }
     drill_fields: []
   }
@@ -156,7 +166,7 @@ view: Sales {
 
   measure: units_store_week {
     type: number
-    sql: ${gross_units_less_buybacks}/nullif(${Distinct_Stores},0)/nullif(${Dates.Distinct_Weeks},0);;
+    sql: ${Gross_Units_Less_Buybacks}/nullif(${Distinct_Stores},0)/nullif(${Dates.Distinct_Weeks},0);;
     drill_fields: []
   }
 
