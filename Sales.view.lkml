@@ -143,7 +143,7 @@ view: Sales {
   measure: Distinct_Stores {
     type: count_distinct
     sql: ${DAX_Number};;
-    drill_fields: []
+    drill_fields: [Route_Number]
   }
 
   measure: Distinct_Brands {
