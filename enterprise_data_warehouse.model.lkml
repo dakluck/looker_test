@@ -26,3 +26,11 @@ explore: Sales {
   }
 
 }
+
+explore: Aloha_Detail {
+  join: Dates {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${Dates.date_sk} = ${Aloha_Detail.dateofbusiness_date} ;;
+  }
+}
