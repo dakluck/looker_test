@@ -176,6 +176,18 @@ view: Sales {
     drill_fields: []
   }
 
+  measure: Sales_Mix {
+    type: percent_of_total
+    sql: ${Gross_Sales_Less_Buybacks} ;;
+    drill_fields: []
+  }
+
+  measure: Unit_Mix {
+    type: percent_of_total
+    sql: ${Gross_Sales_Less_Buybacks} ;;
+    drill_fields: []
+  }
+
   measure: units_store_sku_week {
     type: number
     sql: ${Gross_Units_Less_Buybacks}/nullif(${Distinct_Stores},0)/nullif(${Dates.Distinct_Weeks},0)/nullif(${Distinct_SKUs},0);;
