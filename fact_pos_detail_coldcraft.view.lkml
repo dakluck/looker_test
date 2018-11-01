@@ -1,12 +1,12 @@
 view: fact_pos_detail_coldcraft {
   sql_table_name: PUBLIC.FACT_POS_DETAIL_COLDCRAFT ;;
 
-  dimension: amount {
+  dimension: Amount {
     type: string
     sql: ${TABLE}."AMOUNT" ;;
   }
 
-  dimension: brand {
+  dimension: Brand {
     type: string
     sql: ${TABLE}."BRAND" ;;
   }
@@ -16,12 +16,12 @@ view: fact_pos_detail_coldcraft {
     sql: ${TABLE}."CATEGORY" ;;
   }
 
-  dimension: chainnumber {
+  dimension: Chain_Number {
     type: string
     sql: ${TABLE}."CHAINNUMBER" ;;
   }
 
-  dimension: cost {
+  dimension: Cost {
     type: string
     sql: ${TABLE}."COST" ;;
   }
@@ -32,17 +32,17 @@ view: fact_pos_detail_coldcraft {
     hidden: yes
   }
 
-  dimension: dax_id {
+  dimension: DAX_Number {
     type: string
     sql: ${TABLE}."DAX ID" ;;
   }
 
-  dimension: delivery_method {
+  dimension: Delivery_Method {
     type: string
     sql: ${TABLE}."DELIVERY_METHOD" ;;
   }
 
-  dimension: discount {
+  dimension: Discount {
     type: string
     sql: ${TABLE}."DISCOUNT" ;;
   }
@@ -52,7 +52,7 @@ view: fact_pos_detail_coldcraft {
     sql: ${TABLE}."Drop" ;;
   }
 
-  dimension: inventory_location {
+  dimension: Inventory_Location {
     type: string
     sql: ${TABLE}."INVENTORY_LOCATION" ;;
   }
@@ -83,7 +83,7 @@ view: fact_pos_detail_coldcraft {
     sql_longitude:${Longitude};;
   }
 
-  dimension: qty {
+  dimension: Quantity {
     type: string
     sql: ${TABLE}."QTY" ;;
   }
@@ -104,14 +104,9 @@ view: fact_pos_detail_coldcraft {
     sql: ${TABLE}."TRANSACTION_TYPE" ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
-
   measure: gross_sales_less_buybacks {
     type: sum
-    sql:  ${amount} ;;
+    sql:  ${Amount} ;;
     filters: {
       field: Transaction_Type
       value: "Buyback ,Sales"
@@ -121,13 +116,13 @@ view: fact_pos_detail_coldcraft {
 
   measure: avg_sales_route_week {
     type: number
-    sql: ${gross_sales_less_buybacks}/nullif(${routes},0) ;;
+    sql: ${gross_sales_less_buybacks}/nullif(${Distinct_Routes},0) ;;
     drill_fields: []
   }
 
   measure: gross_units_less_buybacks {
     type: sum
-    sql:  ${qty} ;;
+    sql:  ${Quantity} ;;
     filters: {
       field: Transaction_Type
       value: "Buyback ,Sales"
@@ -135,31 +130,31 @@ view: fact_pos_detail_coldcraft {
     drill_fields: []
   }
 
-  measure: stores {
+  measure: Distinct_Stores {
     type: count_distinct
-    sql: ${dax_id};;
+    sql: ${DAX_Number};;
     drill_fields: []
   }
 
-  measure: brands {
+  measure: Distinct_Brands {
     type: count_distinct
-    sql: ${brand};;
+    sql: ${Brand};;
     drill_fields: []
   }
 
   measure: avg_brands_account {
     type: number
-    sql: ${brands}/nullif(${stores});;
+    sql: ${Distinct_Brands}/nullif(${Distinct_Stores});;
     drill_fields: []
   }
 
-  measure: routes {
+  measure: Distinct_Routes {
     type: count_distinct
     sql: ${Route_Number};;
     drill_fields: []
   }
 
-  measure: weeks {
+  measure: Distinct_Weeks {
     type: count_distinct
     sql:  ${dim_date.fiscal_week} ;;
     drill_fields: []
@@ -167,7 +162,7 @@ view: fact_pos_detail_coldcraft {
 
   measure: units_store_week {
     type: number
-    sql: ${gross_units_less_buybacks}/nullif(${stores},0)/nullif(${weeks},0);;
+    sql: ${gross_units_less_buybacks}/nullif(${Distinct_Stores},0)/nullif(${Distinct_Weeks},0);;
     drill_fields: []
   }
 
