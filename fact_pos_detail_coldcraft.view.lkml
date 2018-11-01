@@ -156,7 +156,7 @@ view: fact_pos_detail_coldcraft {
 
   measure: Distinct_Weeks {
     type: count_distinct
-    sql:  ${dim_date.fiscal_week} ;;
+    sql: ${Dates.Fiscal_Week} ;;
     drill_fields: []
   }
 

@@ -1,4 +1,4 @@
-view: dim_date {
+view: Dates {
   sql_table_name: PUBLIC.DIM_DATE ;;
 
   dimension_group: Calendar {
@@ -15,27 +15,13 @@ view: dim_date {
     sql: ${TABLE}."DATE" ;;
   }
 
-  dimension_group: Fiscal {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week_of_year,
-      fiscal_month_num,
-      fiscal_quarter,
-      fiscal_year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}."DATE" ;;
-  }
 
   dimension: date_sk {
     type: string
     sql: ${TABLE}."DATE_SK" ;;
   }
 
-  dimension: day_name {
+  dimension: Day {
     type: string
     sql: ${TABLE}."DAY_NAME" ;;
   }
@@ -45,46 +31,37 @@ view: dim_date {
     sql: ${TABLE}."FISCAL_DAY" ;;
   }
 
-  dimension: fiscal_month {
+  dimension: Fiscal_Month {
     type: string
     sql: ${TABLE}."FISCAL_MONTH" ;;
+    alias: [Month]
   }
 
-  dimension: fiscal_quarter {
+  dimension: Fiscal_Quarter {
     type: string
     sql: ${TABLE}."FISCAL_QUARTER" ;;
+    alias: [Quarter]
   }
 
-  dimension: fiscal_week {
-    type: string
-    order_by_field: Fiscal_week_of_year
+  dimension: Fiscal_Week {
+    type: number
     sql: ${TABLE}."FISCAL_WEEK" ;;
+    alias: [Week]
   }
 
-  dimension: fiscal_year {
+  dimension: Fiscal_Year {
     type: string
     sql: ${TABLE}."FISCAL_YEAR" ;;
+    alias: [Year]
   }
 
-  dimension: relative_date {
+  dimension: Relative_Date {
     type: string
     sql: ${TABLE}."RELATIVE_DATE" ;;
   }
 
-  dimension: to_date {
+  dimension: To_Date_Flag {
     type: string
     sql: ${TABLE}."TO_DATE" ;;
   }
-
-  measure: count {
-    type: count
-    drill_fields: [day_name]
-  }
-
-  measure: weeks {
-    type: count_distinct
-    sql: ${fiscal_week}  ;;
-  drill_fields: []
-}
-
 }

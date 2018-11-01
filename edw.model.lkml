@@ -10,19 +10,19 @@ datagroup: edw_default_datagroup {
 
 persist_with: edw_default_datagroup
 
-explore: dim_date {
+explore: Dates {
   join: fact_pos_detail_coldcraft {
     type: inner
     relationship: one_to_many
-    sql_on: ${fact_pos_detail_coldcraft.date_sk} = ${dim_date.date_sk} ;;
+    sql_on: ${fact_pos_detail_coldcraft.date_sk} = ${Dates.date_sk} ;;
   }
 }
 
 explore: fact_pos_detail_coldcraft {
-  join: dim_date {
+  join: Dates {
     type: inner
     relationship: many_to_one
-    sql_on: ${dim_date.date_sk} = ${fact_pos_detail_coldcraft.date_sk} ;;
+    sql_on: ${Dates.date_sk}.date_sk} = ${fact_pos_detail_coldcraft.date_sk} ;;
   }
 
 }
