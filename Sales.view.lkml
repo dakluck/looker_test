@@ -164,9 +164,21 @@ view: Sales {
     drill_fields: []
   }
 
+  measure: Distinct_SKUs {
+    type: count_distinct
+    sql: ${Item};;
+    drill_fields: []
+  }
+
   measure: units_store_week {
     type: number
     sql: ${Gross_Units_Less_Buybacks}/nullif(${Distinct_Stores},0)/nullif(${Dates.Distinct_Weeks},0);;
+    drill_fields: []
+  }
+
+  measure: units_store_sku_week {
+    type: number
+    sql: ${Gross_Units_Less_Buybacks}/nullif(${Distinct_Stores},0)/nullif(${Dates.Distinct_Weeks},0)/nullif(${Distinct_SKUs},0);;
     drill_fields: []
   }
 
