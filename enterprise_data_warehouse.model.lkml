@@ -22,7 +22,7 @@ explore: Sales {
   join: Dates {
     type: inner
     relationship: many_to_one
-    sql_on: ${Dates.date_sk}.date_sk} = ${Sales.date_sk} ;;
+    sql_on: ${Dates.date_sk} = ${Sales.date_sk} ;;
   }
 
 }
