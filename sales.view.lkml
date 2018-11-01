@@ -106,7 +106,7 @@ view: sales {
 
   measure: Gross_Sales_Less_Buybacks {
     type: sum
-    sql:  ${Amount} ;;
+    sql:  ${Amount}*3 ;;
     filters: {
       field: Transaction_Type
       value: "Buyback ,Sales"
