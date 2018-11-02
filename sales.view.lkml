@@ -1,4 +1,4 @@
-view: sales {
+view: cpg_sales {
   sql_table_name: PUBLIC.FACT_POS_DETAIL_COLDCRAFT ;;
 
   dimension: amount {
@@ -65,11 +65,13 @@ view: sales {
   dimension: latitude {
     type: number
     sql: ${TABLE}."LATITUDE" ;;
+    hidden: yes
   }
 
   dimension: longitude {
     type: number
     sql: ${TABLE}."LONGITUDE" ;;
+    hidden: yes
   }
 
   dimension: account {

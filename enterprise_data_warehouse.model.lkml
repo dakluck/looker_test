@@ -11,26 +11,18 @@ datagroup: edw_default_datagroup {
 
 persist_with: edw_default_datagroup
 
-explore: dates {
-  join: sales {
-    type: inner
-    relationship: one_to_many
-    sql_on: ${sales.date_sk} = ${dates.date_sk} ;;
-  }
-}
-
-explore: sales {
+explore: cpg_sales {
   join: dates {
     type: inner
     relationship: many_to_one
-    sql_on: ${dates.date_sk} = ${sales.date_sk} ;;
+    sql_on: ${dates.date_sk} = ${cpg_sales.date_sk} ;;
   }
 }
 
-explore: aloha_detail {
+explore: retail_sales{
   join: dates {
     type: left_outer
     relationship: many_to_one
-    sql_on: ${dates.date_sk} = ${aloha_detail.dateofbusiness_date} ;;
+    sql_on: ${dates.date_sk} = ${retail_sales.dateofbusiness_date} ;;
   }
 }
