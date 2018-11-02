@@ -230,26 +230,31 @@ view: retail_sales {
   dimension: revenuecenteritemorder {
     type: string
     sql: ${TABLE}."REVENUECENTERITEMORDER" ;;
+    hidden: yes
   }
 
   dimension: seatnumber {
     type: string
     sql: ${TABLE}."SEATNUMBER" ;;
+    hidden: yes
   }
 
   dimension: secondarytaxid {
     type: string
     sql: ${TABLE}."SECONDARYTAXID" ;;
+    hidden: yes
   }
 
   dimension: seconditemadded {
     type: string
     sql: ${TABLE}."SECONDITEMADDED" ;;
+    hidden: yes
   }
 
   dimension: substituteitemid {
     type: string
     sql: ${TABLE}."SUBSTITUTEITEMID" ;;
+    hidden: yes
   }
 
   dimension_group: systemdate {
@@ -279,7 +284,7 @@ view: retail_sales {
 
   measure: netsales {
     type: sum
-    sql: case when ${discpric} is null then ${price} else ${discpric} ;;
+    sql: case when ${discpric} is null then ${price} else ${discpric} - ${incltax} ;;
     filters: {
       field: modcode
       value: "<> 1"
