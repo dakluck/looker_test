@@ -114,7 +114,7 @@ view: consumer_sales {
       value: "Buyback ,Sales"
     }
     drill_fields: [transaction_type]
-    value_format: "$#.00;($#.00)"
+    value_format: "$#,.00;($#,00.)"
 
   }
 

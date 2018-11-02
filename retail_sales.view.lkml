@@ -178,7 +178,7 @@ view: retail_sales {
   }
 
   dimension: modcode {
-    type: string
+    type: number
     sql: ${TABLE}."MODCODE" ;;
   }
 
@@ -288,7 +288,7 @@ view: retail_sales {
     sql: case when ${discpric} is null then ${price} else ${discpric} - ${incltax} ;;
     filters: {
       field: modcode
-      value: "<> 1"
+      value: "not 1"
     }
     drill_fields: [bohcontrolname]
   }
@@ -298,7 +298,7 @@ view: retail_sales {
     sql: ${quantityunit} ;;
     filters: {
       field: modcode
-      value: "<> 1"
+      value: "not 1"
     }
     drill_fields: [bohcontrolname]
   }
@@ -308,7 +308,7 @@ view: retail_sales {
     sql: ${fkitemid} ;;
     filters: {
       field: modcode
-      value: "<> 1"
+      value: "not 1"
     }
     drill_fields: [bohcontrolname]
   }
@@ -318,7 +318,7 @@ view: retail_sales {
     sql: ${fkstoreid} ;;
     filters: {
       field: modcode
-      value: "<> 1"
+      value: "not 1"
     }
     drill_fields: [bohcontrolname]
   }
