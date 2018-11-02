@@ -2,7 +2,7 @@ view: sales {
   sql_table_name: PUBLIC.FACT_POS_DETAIL_COLDCRAFT ;;
 
   dimension: Amount {
-    type: string
+    type: number
     sql: ${TABLE}."AMOUNT" ;;
   }
 
@@ -17,12 +17,12 @@ view: sales {
   }
 
   dimension: Chain_Number {
-    type: string
+    type: number
     sql: ${TABLE}."CHAINNUMBER" ;;
   }
 
   dimension: Cost {
-    type: string
+    type: number
     sql: ${TABLE}."COST" ;;
   }
 
@@ -43,7 +43,7 @@ view: sales {
   }
 
   dimension: Discount {
-    type: string
+    type: number
     sql: ${TABLE}."DISCOUNT" ;;
   }
 
@@ -84,7 +84,7 @@ view: sales {
   }
 
   dimension: Quantity {
-    type: string
+    type: number
     sql: ${TABLE}."QTY" ;;
   }
 
@@ -96,7 +96,6 @@ view: sales {
   dimension: RSR {
     type: string
     sql: ${TABLE}."SALES_REP" ;;
-
   }
 
   dimension: Transaction_Type {
@@ -150,7 +149,6 @@ view: sales {
     sql: ${DAX_Number};;
     description: "Stores Listed as Active in Salesforce"
   }
-
 
   measure: Distinct_Brands {
     type: count_distinct

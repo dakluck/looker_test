@@ -1,6 +1,4 @@
 connection: "snowflake_pc_dailey_test"
-
-# include all the views
 include: "*.view"
 
 datagroup: edw_default_datagroup {
@@ -24,7 +22,6 @@ explore: sales {
     relationship: many_to_one
     sql_on: ${dates.date_sk} = ${sales.date_sk} ;;
   }
-
 }
 
 explore: aloha_detail {

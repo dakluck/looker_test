@@ -64,9 +64,49 @@ view: dates {
     order_by_field: Fiscal_Year
   }
 
-  dimension: Relative_Date {
+  dimension: Relative_Date_Str {
+    hidden: yes
     type: string
     sql: ${TABLE}."RELATIVE_DATE" ;;
+  }
+
+  dimension: Relative_Date {
+    type: string
+    case: {
+      when: {
+        sql: ${Relative_Date_Str} = 'LY - Year' ;;
+        label: "LY - Year"
+      }
+      when: {
+        sql: ${Relative_Date_Str} = 'LY - Year;LY - Quarter' ;;
+        label: "LY - Quarter"
+      }
+      when: {
+        sql: ${Relative_Date_Str} = 'LY - Year;LY - Quarter;LY - Month' ;;
+        label: "LY - Month"
+      }
+      when: {
+        sql: ${Relative_Date_Str} = 'LY - Year;LY - Quarter;LY - Month;LY - Week' ;;
+        label: "LY - Week"
+      }
+      when: {
+        sql: ${Relative_Date_Str} = 'TY - Year' ;;
+        label: "TY - Year"
+      }
+      when: {
+        sql: ${Relative_Date_Str} = 'TY - Year;TY - Quarter;TY - Month' ;;
+        label: "TY - Month"
+      }
+      when: {
+        sql: ${Relative_Date_Str} = 'TY - Year;TY - Quarter;TY - Month;TY - Week' ;;
+        label: "TY - Week"
+      }
+      when: {
+        sql: ${Relative_Date_Str} = 'TY - Year;TY - Quarter;TY - Month;TY - Week;TY - Day' ;;
+        label: "TY - Day"
+      }
+      else: "NULL"
+    }
   }
 
   dimension: To_Date_Flag {
