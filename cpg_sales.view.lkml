@@ -105,6 +105,7 @@ view: consumer_sales {
     sql: ${TABLE}."TRANSACTION_TYPE" ;;
   }
 
+  #sales measures
   measure: gross_sales_less_buybacks {
     type: sum
     sql:  ${amount} ;;
@@ -112,13 +113,9 @@ view: consumer_sales {
       field: transaction_type
       value: "Buyback ,Sales"
     }
-    drill_fields: []
-  }
+    drill_fields: [transaction_type]
+    value_format: "$#.00;($#.00)"
 
-  measure: avg_sales_route_week {
-    type: number
-    sql: ${gross_sales_less_buybacks}/nullif(${distinct_routes},0) ;;
-    drill_fields: []
   }
 
   measure: gross_units_less_buybacks {
@@ -128,6 +125,13 @@ view: consumer_sales {
       field: transaction_type
       value: "Buyback ,Sales"
     }
+    drill_fields: []
+  }
+
+  #avg sales measures
+  measure: avg_sales_route_week {
+    type: number
+    sql: ${gross_sales_less_buybacks}/nullif(${distinct_routes},0) ;;
     drill_fields: []
   }
 
