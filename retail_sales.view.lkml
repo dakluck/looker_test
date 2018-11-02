@@ -215,6 +215,7 @@ view: retail_sales {
   dimension: qsquickcomboid {
     type: string
     sql: ${TABLE}."QSQUICKCOMBOID" ;;
+    hidden: yes
   }
 
   dimension: quantity {
@@ -291,4 +292,48 @@ view: retail_sales {
     }
     drill_fields: [bohcontrolname]
   }
+
+  measure: units_sold {
+    type: sum
+    sql: ${quantityunit} ;;
+    filters: {
+      field: modcode
+      value: "<> 1"
+    }
+    drill_fields: [bohcontrolname]
+  }
+
+  measure: distinct_items {
+    type: count_distinct
+    sql: ${fkitemid} ;;
+    filters: {
+      field: modcode
+      value: "<> 1"
+    }
+    drill_fields: [bohcontrolname]
+  }
+
+  measure: distinct_stores {
+    type: count_distinct
+    sql: ${fkstoreid} ;;
+    filters: {
+      field: modcode
+      value: "<> 1"
+    }
+    drill_fields: [bohcontrolname]
+  }
+
+  measure: avg_unit_price{
+    type: number
+    sql: ${netsales}/${units_sold} ;;
+    drill_fields: [bohcontrolname]
+  }
+
+  measure: units_per_store_per_day {
+    type: number
+    sql: ${units_sold}/${distinct_stores}/${dates.distinct_days};;
+    drill_fields: [bohcontrolname]
+  }
+
+
 }

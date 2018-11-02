@@ -119,4 +119,12 @@ view: dates {
     sql: ${Fiscal_Week} ;;
     drill_fields: []
   }
+
+  measure: distinct_days {
+    type: count_distinct
+    sql: ${Day} ;;
+    drill_fields: []
+  }
+
+
 }
