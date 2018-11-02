@@ -108,7 +108,7 @@ view: consumer_sales {
   #sales measures
   measure: gross_sales_less_buybacks {
     type: sum
-    sql:  ${amount} ;;
+    sql:  ${amount} * 3 ;;
     filters: {
       field: transaction_type
       value: "Buyback ,Sales"
