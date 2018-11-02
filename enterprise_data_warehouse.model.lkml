@@ -23,6 +23,6 @@ explore: retail_sales{
   join: dates {
     type: left_outer
     relationship: many_to_one
-    sql_on: ${dates.date_sk} = ${retail_sales.dateofbusiness_date} ;;
+    sql_on: ${dates.Calendar_date} = ${retail_sales.dateofbusiness_date} ;;
   }
 }
