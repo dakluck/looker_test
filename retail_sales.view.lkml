@@ -34,6 +34,7 @@ view: retail_sales {
     convert_tz: no
     datatype: date
     sql: ${TABLE}."DATEOFBUSINESS" ;;
+    hidden: yes
   }
 
   dimension_group: datetimestamp {
@@ -48,6 +49,7 @@ view: retail_sales {
       year
     ]
     sql: ${TABLE}."DATETIMESTAMP" ;;
+    hidden: yes
   }
 
   dimension: discpric {
@@ -262,6 +264,7 @@ view: retail_sales {
       year
     ]
     sql: ${TABLE}."SYSTEMDATE" ;;
+    hidden: yes
   }
 
   dimension: type {
@@ -274,8 +277,13 @@ view: retail_sales {
     sql: ${TABLE}."UNIQUEID" ;;
   }
 
-  measure: count {
-    type: count
+  measure: netsales {
+    type: sum
+    sql: case when ${discpric} is null then ${price} else ${discpric} ;;
+    filters: {
+      field: modcode
+      value: "<> 1"
+    }
     drill_fields: [bohcontrolname]
   }
 }
