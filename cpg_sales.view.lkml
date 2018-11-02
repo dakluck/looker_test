@@ -1,4 +1,4 @@
-view: cpg_sales {
+view: consumer_sales {
   sql_table_name: PUBLIC.FACT_POS_DETAIL_COLDCRAFT ;;
 
   dimension: amount {

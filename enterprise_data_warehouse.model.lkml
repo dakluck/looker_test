@@ -11,11 +11,11 @@ datagroup: edw_default_datagroup {
 
 persist_with: edw_default_datagroup
 
-explore: cpg_sales {
+explore: consumer_sales {
   join: dates {
     type: inner
     relationship: many_to_one
-    sql_on: ${dates.date_sk} = ${cpg_sales.date_sk} ;;
+    sql_on: ${dates.date_sk} = ${consumer_sales.date_sk} ;;
   }
 }
 
