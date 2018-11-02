@@ -9,8 +9,8 @@
     type: looker_column
     fields:
     - dates.Calendar_week
-    - Sales.Gross_Sales_Less_Buybacks
-    - Sales.Returns
+    - sales.Gross_Sales_Less_Buybacks
+    - sales.Returns
     fill_fields:
     - dates.Calendar_week
     sorts:
@@ -25,10 +25,10 @@
     show_view_names: true
     point_style: none
     series_labels:
-      Sales.Returns: Returns
-      Sales.Gross_Sales_Less_Buybacks: Gross Sales Less Buybacks
+      sales.Returns: Returns
+      sales.Gross_Sales_Less_Buybacks: Gross Sales Less Buybacks
     series_types:
-      Sales.Returns: line
+      sales.Returns: line
     limit_displayed_rows: false
     limit_displayed_rows_values:
       show_hide: hide
@@ -52,10 +52,10 @@
     show_silhouette: false
     totals_color: "#808080"
     listen:
-      Brand: Sales.Brand
-      Item: Sales.Item
-      Account: Sales.Account
-      Delivery Method: Sales.Delivery_Method
+      Brand: sales.Brand
+      Item: sales.Item
+      Account: sales.Account
+      Delivery Method: sales.Delivery_Method
       Relative Date: dates.Relative_Date
     row: 0
     col: 0
@@ -67,7 +67,7 @@
     explore: Sales
     type: single_value
     fields:
-    - Sales.Distinct_Routes
+    - sales.Distinct_Routes
     limit: 500
     custom_color_enabled: false
     custom_color: forestgreen
@@ -105,10 +105,10 @@
     totals_color: "#808080"
     series_types: {}
     listen:
-      Brand: Sales.Brand
-      Item: Sales.Item
-      Account: Sales.Account
-      Delivery Method: Sales.Delivery_Method
+      Brand: sales.Brand
+      Item: sales.Item
+      Account: sales.Account
+      Delivery Method: sales.Delivery_Method
       Relative Date: dates.Relative_Date
     row: 4
     col: 20
@@ -120,10 +120,10 @@
     explore: Sales
     type: looker_pie
     fields:
-    - Sales.Brand
-    - Sales.Gross_Sales_Less_Buybacks
+    - sales.Brand
+    - sales.Gross_Sales_Less_Buybacks
     sorts:
-    - Sales.Gross_Sales_Less_Buybacks desc
+    - sales.Gross_Sales_Less_Buybacks desc
     limit: 500
     stacking: ''
     show_value_labels: false
@@ -153,10 +153,10 @@
     totals_color: "#808080"
     series_types: {}
     listen:
-      Brand: Sales.Brand
-      Item: Sales.Item
-      Account: Sales.Account
-      Delivery Method: Sales.Delivery_Method
+      Brand: sales.Brand
+      Item: sales.Item
+      Account: sales.Account
+      Delivery Method: sales.Delivery_Method
       Relative Date: dates.Relative_Date
     row: 9
     col: 0
@@ -168,9 +168,9 @@
     explore: Sales
     type: looker_line
     fields:
-    - Sales.Distinct_SKUs
-    - Sales.units_store_week
-    - Sales.Distinct_Stores
+    - sales.Distinct_SKUs
+    - sales.units_store_week
+    - sales.Distinct_Stores
     - dates.Calendar_month
     fill_fields:
     - dates.Calendar_month
@@ -191,12 +191,12 @@
     - label: ''
       orientation: left
       series:
-      - id: Sales.Distinct_SKUs
+      - id: sales.Distinct_SKUs
         name: Sales Distinct Skus
-        axisId: Sales.Distinct_SKUs
-      - id: Sales.units_store_week
+        axisId: sales.Distinct_SKUs
+      - id: sales.units_store_week
         name: Sales Units Store Week
-        axisId: Sales.units_store_week
+        axisId: sales.units_store_week
       showLabels: true
       showValues: true
       unpinAxis: false
@@ -206,9 +206,9 @@
     - label:
       orientation: right
       series:
-      - id: Sales.Distinct_Stores
+      - id: sales.Distinct_Stores
         name: Sales Distinct Stores
-        axisId: Sales.Distinct_Stores
+        axisId: sales.Distinct_Stores
       showLabels: true
       showValues: true
       unpinAxis: false
@@ -235,10 +235,10 @@
     show_silhouette: false
     totals_color: "#808080"
     listen:
-      Brand: Sales.Brand
-      Item: Sales.Item
-      Account: Sales.Account
-      Delivery Method: Sales.Delivery_Method
+      Brand: sales.Brand
+      Item: sales.Item
+      Account: sales.Account
+      Delivery Method: sales.Delivery_Method
       Relative Date: dates.Relative_Date
     row: 9
     col: 8
@@ -250,14 +250,14 @@
     explore: Sales
     type: table
     fields:
-    - Sales.Item
-    - Sales.Gross_Sales_Less_Buybacks
-    - Sales.Gross_Units_Less_Buybacks
-    - Sales.Unit_Mix
-    - Sales.Sales_Mix
-    - Sales.Distinct_Stores
+    - sales.Item
+    - sales.Gross_Sales_Less_Buybacks
+    - sales.Gross_Units_Less_Buybacks
+    - sales.Unit_Mix
+    - sales.Sales_Mix
+    - sales.Distinct_Stores
     sorts:
-    - Sales.Gross_Sales_Less_Buybacks desc
+    - sales.Gross_Sales_Less_Buybacks desc
     limit: 500
     show_view_names: true
     show_row_numbers: true
@@ -299,10 +299,10 @@
     totals_color: "#808080"
     series_types: {}
     listen:
-      Brand: Sales.Brand
-      Item: Sales.Item
-      Account: Sales.Account
-      Delivery Method: Sales.Delivery_Method
+      Brand: sales.Brand
+      Item: sales.Item
+      Account: sales.Account
+      Delivery Method: sales.Delivery_Method
       Relative Date: dates.Relative_Date
     row: 20
     col: 0
@@ -314,14 +314,14 @@
     explore: Sales
     type: looker_map
     fields:
-    - Sales.Gross_Sales_Less_Buybacks
-    - Sales.Account_Location
+    - sales.Gross_Sales_Less_Buybacks
+    - sales.Account_Location
     filters:
-      Sales.Account_Location_bin_level: '7'
-      Sales.Account_Location: inside box from 79.17133464081945, -180 to -40.979898069620134,
+      sales.Account_Location_bin_level: '7'
+      sales.Account_Location: inside box from 79.17133464081945, -180 to -40.979898069620134,
         -45
     sorts:
-    - Sales.Gross_Sales_Less_Buybacks desc
+    - sales.Gross_Sales_Less_Buybacks desc
     limit: 5000
     map_plot_mode: automagic_heatmap
     heatmap_gridlines: false
@@ -374,10 +374,10 @@
     totals_color: "#808080"
     series_types: {}
     listen:
-      Brand: Sales.Brand
-      Item: Sales.Item
-      Account: Sales.Account
-      Delivery Method: Sales.Delivery_Method
+      Brand: sales.Brand
+      Item: sales.Item
+      Account: sales.Account
+      Delivery Method: sales.Delivery_Method
       Relative Date: dates.Relative_Date
     row: 15
     col: 0
@@ -389,7 +389,7 @@
     explore: Sales
     type: single_value
     fields:
-    - Sales.Active_Stores
+    - sales.Active_Stores
     limit: 500
     custom_color_enabled: false
     custom_color: forestgreen
@@ -427,10 +427,10 @@
     totals_color: "#808080"
     series_types: {}
     listen:
-      Brand: Sales.Brand
-      Item: Sales.Item
-      Account: Sales.Account
-      Delivery Method: Sales.Delivery_Method
+      Brand: sales.Brand
+      Item: sales.Item
+      Account: sales.Account
+      Delivery Method: sales.Delivery_Method
       Relative Date: dates.Relative_Date
     row: 0
     col: 20
@@ -442,14 +442,14 @@
     explore: dates
     type: looker_bar
     fields:
-    - Sales.Account
-    - Sales.Gross_Sales_Less_Buybacks
-    - Sales.Brand
+    - sales.Account
+    - sales.Gross_Sales_Less_Buybacks
+    - sales.Brand
     pivots:
-    - Sales.Brand
+    - sales.Brand
     sorts:
-    - Sales.Gross_Sales_Less_Buybacks desc 0
-    - Sales.Brand
+    - sales.Gross_Sales_Less_Buybacks desc 0
+    - sales.Brand
     limit: 5000
     column_limit: 50
     row_total: right
@@ -496,7 +496,7 @@
     type: looker_column
     fields:
     - dates.Calendar_month
-    - Sales.Avg_Brands_Per_Account
+    - sales.Avg_Brands_Per_Account
     fill_fields:
     - dates.Calendar_month
     limit: 500
@@ -545,7 +545,7 @@
     - Account
     - Item
     - Relative Date
-    field: Sales.Brand
+    field: sales.Brand
   - name: Item
     title: Item
     type: field_filter
@@ -559,7 +559,7 @@
     - Account
     - Brand
     - Relative Date
-    field: Sales.Item
+    field: sales.Item
   - name: Account
     title: Account
     type: field_filter
@@ -573,7 +573,7 @@
     - Item
     - Brand
     - Relative Date
-    field: Sales.Account
+    field: sales.Account
   - name: Delivery Method
     title: Delivery Method
     type: field_filter
@@ -587,7 +587,7 @@
     - Item
     - Brand
     - Relative Date
-    field: Sales.Delivery_Method
+    field: sales.Delivery_Method
   - name: Relative Date
     title: Relative Date
     type: field_filter
