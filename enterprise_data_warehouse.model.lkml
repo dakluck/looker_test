@@ -1,5 +1,8 @@
 connection: "snowflake_pc_dailey_test"
+
+#have to add lookml dashboards to the model as below
 include: "*.view"
+#include: "*.dashboard.lookml"
 
 datagroup: edw_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;

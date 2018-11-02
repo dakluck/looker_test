@@ -1,12 +1,12 @@
 view: sales {
   sql_table_name: PUBLIC.FACT_POS_DETAIL_COLDCRAFT ;;
 
-  dimension: Amount {
+  dimension: amount {
     type: number
     sql: ${TABLE}."AMOUNT" ;;
   }
 
-  dimension: Brand {
+  dimension: brand {
     type: string
     sql: ${TABLE}."BRAND" ;;
   }
@@ -16,12 +16,12 @@ view: sales {
     sql: ${TABLE}."CATEGORY" ;;
   }
 
-  dimension: Chain_Number {
+  dimension: chain_number {
     type: number
     sql: ${TABLE}."CHAINNUMBER" ;;
   }
 
-  dimension: Cost {
+  dimension: cost {
     type: number
     sql: ${TABLE}."COST" ;;
   }
@@ -32,82 +32,82 @@ view: sales {
     hidden: yes
   }
 
-  dimension: DAX_Number {
+  dimension: dax_number {
     type: string
     sql: ${TABLE}."DAX ID" ;;
   }
 
-  dimension: Delivery_Method {
+  dimension: delivery_method {
     type: string
     sql: ${TABLE}."DELIVERY_METHOD" ;;
   }
 
-  dimension: Discount {
+  dimension: discount {
     type: number
     sql: ${TABLE}."DISCOUNT" ;;
   }
 
-  dimension: Sales_Order{
+  dimension: sales_order {
     type: string
     sql: ${TABLE}."Drop" ;;
   }
 
-  dimension: Inventory_Location {
+  dimension: inventory_location {
     type: string
     sql: ${TABLE}."INVENTORY_LOCATION" ;;
   }
 
-  dimension: Item {
+  dimension: item {
     type: string
     sql: ${TABLE}."ITEM" ;;
   }
 
-  dimension: Latitude {
+  dimension: latitude {
     type: number
     sql: ${TABLE}."LATITUDE" ;;
   }
 
-  dimension: Longitude {
+  dimension: longitude {
     type: number
     sql: ${TABLE}."LONGITUDE" ;;
   }
 
-  dimension: Account {
+  dimension: account {
     type: string
     sql: ${TABLE}."OUTLET" ;;
   }
 
-  dimension: Account_Location{
+  dimension: account_location{
     type: location
-    sql_latitude: ${Latitude};;
-    sql_longitude:${Longitude};;
+    sql_latitude: ${latitude};;
+    sql_longitude:${longitude};;
   }
 
-  dimension: Quantity {
+  dimension: quantity {
     type: number
     sql: ${TABLE}."QTY" ;;
   }
 
-  dimension: Route_Number {
+  dimension: route_number {
     type: string
     sql: ${TABLE}."ROUTE_ID" ;;
   }
 
-  dimension: RSR {
+  dimension: rsr {
     type: string
     sql: ${TABLE}."SALES_REP" ;;
   }
 
-  dimension: Transaction_Type {
+  dimension: transaction_type {
     type: string
     sql: ${TABLE}."TRANSACTION_TYPE" ;;
   }
 
-  measure: Gross_Sales_Less_Buybacks {
+  measure: gross_sales_less_buybacks {
     type: sum
-    sql:  ${Amount}*3 ;;
+    sql:  ${amount} ;;
     filters: {
-      field: Transaction_Type
+      field: transaction_type
       value: "Buyback ,Sales"
     }
     drill_fields: []
@@ -115,93 +115,93 @@ view: sales {
 
   measure: avg_sales_route_week {
     type: number
-    sql: ${Gross_Sales_Less_Buybacks}/nullif(${Distinct_Routes},0) ;;
+    sql: ${gross_sales_less_buybacks}/nullif(${distinct_routes},0) ;;
     drill_fields: []
   }
 
-  measure: Gross_Units_Less_Buybacks {
+  measure: gross_units_less_buybacks {
     type: sum
-    sql:  ${Quantity} ;;
+    sql:  ${quantity} ;;
     filters: {
-      field: Transaction_Type
+      field: transaction_type
       value: "Buyback ,Sales"
     }
     drill_fields: []
   }
 
-  measure: Returns {
+  measure: returns {
     type: sum
-    sql:  ${Amount}*-1 ;;
+    sql:  ${amount}*-1 ;;
     filters: {
-      field: Transaction_Type
+      field: transaction_type
       value: "Return"
     }
     drill_fields: []
   }
 
-  measure: Count_Of_Stores {
+  measure: count_of_stores {
     type: count_distinct
-    sql: ${DAX_Number};;
+    sql: ${dax_number};;
   }
 
-  measure: Active_Stores {
+  measure: active_stores {
     type: count_distinct
-    sql: ${DAX_Number};;
+    sql: ${dax_number};;
     description: "Stores Listed as Active in Salesforce"
   }
 
-  measure: Distinct_Brands {
+  measure: distinct_brands {
     type: count_distinct
-    sql: ${Brand};;
+    sql: ${brand};;
     drill_fields: []
   }
 
   measure: avg_brands_account {
     type: number
-    sql: ${Distinct_Brands}/nullif(${Count_Of_Stores});;
+    sql: ${distinct_brands}/nullif(${count_of_stores});;
     drill_fields: []
   }
 
-  measure: Distinct_Routes {
+  measure: distinct_routes {
     type: count_distinct
-    sql: ${RSR};;
+    sql: ${rsr};;
     drill_fields: []
   }
 
-  measure: Distinct_SKUs {
+  measure: distinct_skus {
     type: count_distinct
-    sql: ${Item};;
+    sql: ${item};;
     drill_fields: []
   }
 
   measure: units_store_week {
     type: number
-    sql: ${Gross_Units_Less_Buybacks}/nullif(${Count_Of_Stores},0)/nullif(${dates.Distinct_Weeks},0);;
+    sql: ${gross_units_less_buybacks}/nullif(${count_of_stores},0)/nullif(${dates.Distinct_Weeks},0);;
     drill_fields: []
   }
 
-  measure: Sales_Mix {
+  measure: sales_mix {
     type: percent_of_total
-    sql: ${Gross_Sales_Less_Buybacks} ;;
+    sql: ${gross_sales_less_buybacks} ;;
     drill_fields: []
   }
 
-  measure: Avg_Brands_Per_Account {
+  measure: avg_brands_per_account {
     type: number
-    sql: ${Distinct_Brands}/nullif(${Active_Stores},0) ;;
+    sql: ${distinct_brands}/nullif(${active_stores},0) ;;
     drill_fields: []
     description: "Need To Ask About This One - Hard to Replicate"
   }
 
-  measure: Unit_Mix {
+  measure: unit_mix {
     type: percent_of_total
-    sql: ${Gross_Sales_Less_Buybacks} ;;
+    sql: ${gross_sales_less_buybacks} ;;
     drill_fields: []
   }
 
   measure: units_store_sku_week {
     type: number
-    sql: ${Gross_Units_Less_Buybacks}/nullif(${Count_Of_Stores},0)/nullif(${dates.Distinct_Weeks},0)/nullif(${Distinct_SKUs},0);;
+    sql: ${gross_units_less_buybacks}/nullif(${count_of_stores},0)/nullif(${dates.Distinct_Weeks},0)/nullif(${distinct_skus},0);;
     drill_fields: []
   }
 
