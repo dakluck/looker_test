@@ -4,7 +4,7 @@
   elements:
   - title: Coldcraft Sales Trend
     name: Coldcraft Sales Trend
-    model: enterprise_data_warehouse
+    model: edw
     explore: dates
     type: looker_column
     fields:
@@ -63,7 +63,7 @@
     height: 9
   - title: Untitled
     name: Untitled
-    model: enterprise_data_warehouse
+    model: edw
     explore: Sales
     type: single_value
     fields:
@@ -116,7 +116,7 @@
     height: 5
   - title: Sales By Brand
     name: Sales By Brand
-    model: enterprise_data_warehouse
+    model: edw
     explore: Sales
     type: looker_pie
     fields:
@@ -164,7 +164,7 @@
     height: 6
   - title: Unit Trend vs Account Growth
     name: Unit Trend vs Account Growth
-    model: enterprise_data_warehouse
+    model: edw
     explore: Sales
     type: looker_line
     fields:
@@ -246,7 +246,7 @@
     height: 6
   - title: Item Details
     name: Item Details
-    model: enterprise_data_warehouse
+    model: edw
     explore: Sales
     type: table
     fields:
@@ -310,7 +310,7 @@
     height: 6
   - title: Sales Heatmap
     name: Sales Heatmap
-    model: enterprise_data_warehouse
+    model: edw
     explore: Sales
     type: looker_map
     fields:
@@ -385,7 +385,7 @@
     height: 5
   - title: Untitled
     name: Untitled
-    model: enterprise_data_warehouse
+    model: edw
     explore: Sales
     type: single_value
     fields:
@@ -438,7 +438,7 @@
     height: 4
   - title: Top 10 Customers by Brand
     name: Top 10 Customers by Brand
-    model: enterprise_data_warehouse
+    model: edw
     explore: dates
     type: looker_bar
     fields:
@@ -491,7 +491,7 @@
     height: 6
   - title: Average Brands Per Account
     name: Average Brands Per Account
-    model: enterprise_data_warehouse
+    model: edw
     explore: dates
     type: looker_column
     fields:
@@ -538,7 +538,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: enterprise_data_warehouse
+    model: edw
     explore: Sales
     listens_to_filters:
     - Delivery Method
@@ -552,7 +552,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: enterprise_data_warehouse
+    model: edw
     explore: Sales
     listens_to_filters:
     - Delivery Method
@@ -566,7 +566,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: enterprise_data_warehouse
+    model: edw
     explore: Sales
     listens_to_filters:
     - Delivery Method
@@ -580,7 +580,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: enterprise_data_warehouse
+    model: edw
     explore: Sales
     listens_to_filters:
     - Account
@@ -594,7 +594,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: enterprise_data_warehouse
+    model: edw
     explore: dates
     listens_to_filters:
     - Delivery Method
